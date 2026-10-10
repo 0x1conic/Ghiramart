@@ -1,0 +1,16 @@
+import { Link, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { PageTransition } from '../../components/motion/MotionPrimitives'
+import { BookingItems, BookingStatus, BookingTotals, useCustomerBookings } from '../../components/commerce/BookingDetails'
+import { orderService } from '../../services/orderService'
+
+export function OrdersPage() {
+  const { orderId } = useParams()
+  const { orders, error } = useCustomerBookings()
+  const selected = orderId ? orders.find(order => order.id === orderId) : orders[0]
+  const [cancelPending, setCancelPending] = useState(false)
+  const [actionError, setActionError] = useState('')
+  useEffect(() => { if (orderId) void orderService.get(orderId).catch(reason => setActionError(reason instanceof Error ? reason.message : 'Could not load order.')) }, [orderId])
+  const cancel = async () => { if (!selected || cancelPending) return; setCancelPending(true); setActionError(''); try { await orderService.cancel(selected.id) } catch (reason) { setActionError(reason instanceof Error ? reason.message : 'Could not cancel order.') } finally { setCancelPending(false) } }
+  return <PageTransition className="page-shell bg-[var(--cream)]"><div className="content-wrap py-8"><span className="eyebrow text-[var(--green)]">Member / Bookings</span><h1 className="section-title mt-3">Your baskets,<br />all in one place.</h1>{(error || actionError) && <p role="alert" className="mt-5 text-red-700">{error || actionError}</p>}<div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,.8fr)]"><section className="surface-card min-w-0">{selected ? <><h2 className="break-all font-brand text-xl font-bold">{selected.id}</h2><p className="my-3 text-xs text-[var(--muted)]">{selected.placedAt}</p><BookingStatus status={selected.status} /><p className="mt-4 text-sm">{selected.status === 'new' ? 'Your booking is waiting for admin review.' : selected.status === 'confirmed' ? 'The admin has confirmed your booking.' : selected.status === 'cancelled' ? 'This booking has been cancelled.' : 'Your order is moving through the market.'}</p><BookingItems order={selected} /><BookingTotals order={selected} /><p className="mt-5 text-sm">{selected.address.recipient} · {selected.address.city}</p>{['new', 'confirmed'].includes(selected.status) && <button disabled={cancelPending} onClick={() => void cancel()} className="pill-button mt-5 bg-[var(--pink)]">{cancelPending ? 'Cancelling…' : 'Cancel order'}</button>}</> : <><h2 className="font-brand text-xl font-bold">{orderId ? 'Booking not found.' : 'No bookings yet.'}</h2><Link className="pill-button btn-ink mt-5" to="/market">Explore the market</Link></>}</section><section><h2 className="font-brand mb-4 text-xl font-bold">Booking history</h2><div className="space-y-3" aria-live="polite">{orders.map(order => <Link aria-current={selected?.id === order.id ? 'page' : undefined} to={`/member/orders/${order.id}`} key={order.id} className="surface-card block"><strong className="break-all">{order.id}</strong><p className="my-3 text-sm">NPR {order.total.toLocaleString()} · {order.placedAt}</p><BookingStatus status={order.status} /></Link>)}</div></section></div></div></PageTransition>
+}

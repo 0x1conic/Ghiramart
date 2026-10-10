@@ -1,0 +1,142 @@
+@layer components {
+  .home-arrival { position: relative; overflow: clip; background: var(--cream); }
+  .home-arrival::before { content: ''; pointer-events: none; position: absolute; inset: 0; opacity: .4; background-image: radial-gradient(#63734f45 .6px, transparent .6px); background-size: 7px 7px; mask-image: linear-gradient(100deg, transparent 25%, #000); }
+  .arrival-headline { position: relative; margin-top: 24px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(3.8rem, 6.9vw, 7rem); line-height: .99; letter-spacing: -.075em; padding-bottom: 12px; }
+  .arrival-mask { display: block; overflow: hidden; padding-bottom: .13em; margin-bottom: -.13em; }
+  .arrival-word { display: inline-block; transform-origin: left bottom; }
+  .arrival-line-1 { color: var(--green); }
+  .arrival-line-2 { margin-top: 18px; font-family: Georgia, serif; font-style: italic; font-weight: 400; font-size: .49em; letter-spacing: -.05em; line-height: 1.3; }
+  .arrival-underline { position: absolute; width: 68%; max-width: 350px; left: 0; top: 64%; height: 26px; color: var(--orange); }
+  .home-edition { display: flex; justify-content: space-between; align-items: center; padding-block: 16px; border-bottom: 1px solid #172f231c; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; gap: 12px; }
+  .home-product-showcase { min-width: 0; padding: clamp(18px, 2.4vw, 32px); border: 1px solid #18352312; border-radius: 32px; background: #fffdf8cc; box-shadow: 0 24px 70px #1835230c; }
+  .home-product-showcase-heading { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
+  .home-product-showcase-heading h1 { margin-top: 8px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 3vw, 48px); font-weight: 700; line-height: 1; letter-spacing: -.055em; }
+  .home-product-showcase-heading > a { display: inline-flex; flex-shrink: 0; align-items: center; gap: 8px; border-bottom: 1px solid currentColor; padding-bottom: 4px; color: var(--green); font-size: 12px; font-weight: 800; }
+  .home-product-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .home-product-grid .grocery-card-media { height: 238px; flex-basis: 238px; }
+  .home-product-grid .grocery-card-toolbar { height: 54px; flex-basis: 54px; }
+  .home-product-grid .grocery-card-art { height: 160px; flex-basis: 160px; }
+  .home-product-grid .grocery-card-details { padding: 15px; }
+  .home-product-grid .grocery-card-name { margin-top: 9px; }
+  .home-product-grid .grocery-card-footer { padding-top: 14px; }
+  .market-scene { min-height: 610px; position: relative; isolation: isolate; background: none; }
+  .market-scene-disc { position: absolute; inset: 8% 0 9%; border-radius: 48% 48% 42% 42%; background: radial-gradient(circle at 35% 25%, #fcfff5, #e5f0d5 50%, #b8d5a1); box-shadow: inset -18px -22px 50px #45784414; }
+  .market-scene-disc::before { content: ''; position: absolute; inset: 7% 15% 0; background: #ffffff70; clip-path: polygon(50% 0, 100% 33%, 88% 33%, 88% 93%, 12% 93%, 12% 33%, 0 33%); }
+  .market-scene-orbit { position: absolute; inset: 4% -4% 6%; border: 2px solid #3e862c45; border-top-color: #ed811a; border-bottom-width: 8px; border-radius: 50%; transform: rotate(-25deg) scaleY(.87); }
+  .market-scene-word { position: absolute; left: 4%; top: 32%; font-family: 'Bebas Neue', sans-serif; font-size: clamp(100px, 14vw, 200px); color: #fcfff580; line-height: 1; letter-spacing: -.03em; transform: rotate(-9deg); }
+  .scene-product { position: absolute; z-index: 10; }
+  .scene-product img { width: 100%; height: 100%; filter: drop-shadow(9px 25px 13px #254a3533); }
+  .scene-product-0 { width: 42%; left: 24%; top: 10%; }
+  .scene-product-1 { width: 28%; left: 1%; top: 42%; }
+  .scene-product-2 { width: 21%; right: 3%; top: 17%; }
+  .scene-product-3 { width: 36%; right: 4%; bottom: 12%; }
+  .scene-product-4 { width: 23%; right: 5%; top: 42%; }
+  .scene-product-5 { width: 22%; left: 27%; bottom: 10%; }
+  .scene-product-6 { width: 19%; left: 3%; top: 16%; }
+  .market-scene-stamp { position: absolute; z-index: 20; right: -1%; top: 4%; width: 95px; height: 95px; display: grid; place-content: center; text-align: center; background: #f3b950; color: var(--ink); clip-path: polygon(50% 0%, 61% 8%, 75% 7%, 81% 20%, 94% 25%, 92% 39%, 100% 50%, 92% 61%, 94% 75%, 81% 80%, 75% 93%, 61% 92%, 50% 100%, 39% 92%, 25% 93%, 19% 80%, 6% 75%, 8% 61%, 0% 50%, 8% 39%, 6% 25%, 19% 20%, 25% 7%, 39% 8%); transform: rotate(12deg); }
+  .market-scene-stamp strong { font-family: 'Space Grotesk', sans-serif; font-size: 30px; line-height: 1; }
+  .market-scene-stamp span { font-size: 9px; font-weight: 800; text-transform: uppercase; margin-top: 3px; }
+  .market-scene-receipt { position: absolute; z-index: 25; bottom: 2%; left: 0; background: #fffdf7; padding: 17px 22px; width: 200px; transform: rotate(-6deg); box-shadow: 0 12px 25px #27473112; border-bottom: 3px dashed #b5bc9d; }
+  .market-scene-receipt::before { content: ''; position: absolute; width: 70px; height: 22px; background: #dacb9670; left: 32%; top: -10px; transform: rotate(3deg); }
+  .scene-caption { position: absolute; bottom: 1%; right: 1%; font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
+  .arrival-ribbon { overflow: hidden; background: var(--forest); color: white; padding: 20px 0; border-block: 1px solid #597a3326; }
+  .arrival-ribbon p { display: flex; justify-content: center; gap: 38px; white-space: nowrap; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(16px, 2vw, 25px); letter-spacing: -.03em; }
+  .story-collection { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; }
+  .story-feature { position: relative; min-height: 490px; padding: 36px; overflow: hidden; background: #e7f2dd; border-radius: 10px 90px 10px 10px; }
+  .story-feature h3 { position: relative; z-index: 2; font-family: Georgia, serif; font-size: clamp(40px, 4.5vw, 64px); line-height: 1.05; letter-spacing: -.04em; font-style: italic; }
+  .story-feature-art { position: absolute; right: -3%; bottom: 5%; width: 65%; height: 60%; display: flex; align-items: end; transform: rotate(-9deg); }
+  .story-rice { width: 65%; }
+  .story-dal { width: 37%; margin-left: -8%; }
+  .story-feature-art img { width: 100%; }
+  .story-small-art { width: 110px; flex-shrink: 0; margin-left: auto; }
+  .story-note { position: absolute; left: 36px; bottom: 30px; z-index: 3; width: 155px; background: #fffdf2; padding: 18px; font-size: 11px; font-weight: 600; line-height: 1.6; transform: rotate(4deg); box-shadow: 0 8px 20px #12301b0c; }
+  .story-side { display: grid; gap: 20px; }
+  .story-small { position: relative; display: flex; align-items: center; padding: 26px; overflow: hidden; border-radius: 12px; min-height: 225px; }
+  .story-small img { width: 110px; height: 145px; margin-left: auto; object-fit: contain; }
+  .story-small h3 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; line-height: 1.1; letter-spacing: -.05em; }
+  @media (max-width: 1023px) and (min-width: 768px) { .market-scene { min-height: 490px; } .market-scene-receipt { width: 165px; } }
+  @media (max-width: 767px) {
+    .arrival-headline { font-size: clamp(3.5rem, 16vw, 5.5rem); }
+    .home-edition { font-size: 8px; }
+    .market-scene { min-height: 450px; }
+    .market-scene-stamp { width: 75px; height: 75px; }
+    .market-scene-receipt { width: 168px; font-size: 11px; bottom: 0; }
+    .scene-caption { display: none; }
+    .story-collection { grid-template-columns: minmax(0, 1fr); }
+    .story-feature { min-height: 435px; padding: 26px; }
+    .story-small { min-height: 210px; }
+    .story-note { left: 24px; bottom: 24px; width: 140px; }
+  }
+}
+
+  .home-hero-grid > *, .story-collection > *, .story-side > * { min-width: 0; }
+  .market-scene-orbit, .scene-ripple, .membership-orbit { pointer-events: none; }
+  .orbit-glint { position: absolute; width: 12px; height: 12px; background: var(--orange); border: 3px solid #fff9e8; border-radius: 50%; left: 19%; top: 9%; box-shadow: 0 0 0 6px #f09b2920; }
+  .scene-ripple { position: absolute; inset: 15% 9%; border-radius: 50%; border: 1px solid #d78b4560; opacity: 0; }
+  .scene-in-view > .scene-ripple { animation: scene-ripple 1.8s ease-out 2 both; }
+  .scene-in-view > .scene-ripple-two { animation-delay: .6s; }
+  @keyframes scene-ripple { 0% { transform: scale(.65); opacity: 0; } 20% { opacity: .65; } 100% { transform: scale(1.2); opacity: 0; } }
+  .market-scene-disc { animation: none; }
+  .scene-in-view .orbit-glint { animation: glint-arrival 2s ease-in-out 2; }
+  @keyframes glint-arrival { 50% { box-shadow: 0 0 0 12px #f09b2900; transform: scale(1.3); } }
+  .scene-product-4 { right: 0; top: 38%; }
+  .scene-product-3 { right: 8%; bottom: 10%; }
+  @media (max-width: 767px) {
+    .home-arrival { min-height: auto; padding-bottom: 24px; }
+    .home-hero-grid { gap: 12px; padding-block: 20px; }
+    .home-product-showcase { padding: 18px; border-radius: 24px; }
+    .home-product-showcase-heading { align-items: center; margin-bottom: 18px; }
+    .home-product-showcase-heading h1 { font-size: clamp(25px, 8vw, 36px); }
+    .home-product-grid { grid-template-columns: minmax(0, 1fr); }
+    .home-hero-grid > div:first-child > p { font-size: 14px; margin-top: 16px; }
+    .arrival-headline { font-size: clamp(2rem, 12.5vw, 4.8rem); margin-top: 12px; }
+    .arrival-line-2 { margin-top: 10px; }
+    .arrival-underline { height: 18px; }
+    .brand-promise { padding-block: 6px; gap: 10px; }
+    .brand-promise::before { width: 24px; flex-shrink: 0; }
+    .brand-promise p { font-size: clamp(12px, 4.2vw, 19px); }
+    .brand-promise small { font-size: 7px; letter-spacing: .07em; }
+    .market-scene { min-height: 0; height: auto; aspect-ratio: 1 / 1.05; margin-block: 12px; }
+    .market-scene-disc { inset: 5% 3% 13%; }
+    .market-scene-orbit { inset: 5% 4% 12%; border-bottom-width: 4px; }
+    .market-scene-word { font-size: 26vw; }
+    .market-scene-stamp { width: 56px; height: 56px; right: 0; top: 0; }
+    .market-scene-stamp strong { font-size: 21px; }
+    .market-scene-stamp span { font-size: 6px; }
+    .market-scene-receipt { width: 124px; padding: 10px 12px; bottom: 0; }
+    .market-scene-receipt .eyebrow { font-size: 7px; }
+    .market-scene-receipt p { font-size: 12px; }
+    .market-scene-receipt a { font-size: 7px; margin-top: 6px; padding-top: 6px; }
+    .scene-product-0 { width: 40%; left: 25%; top: 3%; }
+    .scene-product-1 { width: 28%; top: 37%; }
+    .scene-product-2 { top: 13%; }
+    .scene-product-5 { left: 35%; bottom: 7%; }
+    .scene-product-6 { top: 13%; }
+    .story-section, .membership-section { padding-block: 32px; }
+    .story-feature { min-height: 370px; padding: 22px; border-top-right-radius: 55px; }
+    .story-feature h3 { font-size: clamp(28px, 9vw, 42px); }
+    .story-feature-art { width: 70%; bottom: 12%; }
+    .story-note { width: 118px; padding: 12px; font-size: 9px; left: 16px; bottom: 15px; }
+    .story-small { padding: 20px; min-height: 180px; gap: 6px; }
+    .story-small h3 { font-size: clamp(18px, 5.6vw, 27px); }
+    .story-small .eyebrow { font-size: 9px; }
+    .story-small-art { width: 27%; }
+    .story-small img { width: 100%; height: auto; }
+    .arrival-ribbon p { gap: 18px; white-space: normal; text-align: center; flex-wrap: wrap; padding-inline: 16px; font-size: 16px; }
+  }
+  @media (max-width: 359px) {
+    .content-wrap { width: calc(100% - 24px); }
+    .home-edition { font-size: 7px; letter-spacing: .07em; }
+    .home-product-showcase { padding: 12px; }
+    .home-product-showcase-heading > a { font-size: 10px; }
+    .home-hero-grid .pill-button { min-width: 0; padding: 12px; font-size: 10px; }
+    .home-hero-grid a[aria-label="Search all groceries"] { padding-inline: 12px; gap: 8px; min-height: 52px; }
+    .home-hero-grid a[aria-label="Search all groceries"] > span { font-size: 11px; }
+    .home-hero-grid a[aria-label="Search all groceries"] > span:last-child { width: 28px; height: 28px; flex-shrink: 0; }
+    .home-hero-grid > div:first-child > div:last-child { gap: 4px; }
+    .home-hero-grid strong { font-size: 14px; }
+    .market-scene-receipt { width: 105px; }
+    .story-feature { min-height: 325px; padding: 18px; }
+    .story-small { padding: 16px; }
+    .story-note { width: 106px; }
+  }

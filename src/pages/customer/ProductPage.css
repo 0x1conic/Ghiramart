@@ -1,0 +1,80 @@
+.product-gallery-stage {
+  width: min(100%, 560px);
+  padding-top: 52px;
+}
+
+.product-gallery-main {
+  position: relative;
+  display: grid;
+  min-height: 430px;
+  place-items: center;
+  border-radius: 42px;
+  background: radial-gradient(circle at 50% 55%, #ffffff14, transparent 58%);
+}
+
+.product-gallery-main > img {
+  width: min(64%, 390px);
+  height: 390px;
+  object-fit: contain;
+  filter: drop-shadow(0 28px 22px #001c0f55);
+}
+
+.product-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid #ffffff2b;
+  border-radius: 50%;
+  background: #062d1dbb;
+  color: white;
+  transform: translateY(-50%);
+  backdrop-filter: blur(12px);
+}
+
+.product-gallery-arrow:hover { background: var(--amber); color: var(--ink); }
+.product-gallery-arrow.is-left { left: 5px; }
+.product-gallery-arrow.is-right { right: 5px; }
+
+.product-gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  padding: 10px 4px 4px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.product-gallery-thumbs button {
+  display: grid;
+  flex: 0 0 72px;
+  width: 72px;
+  height: 76px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #ffffff2b;
+  border-radius: 16px;
+  background: #ffffff12;
+}
+
+.product-gallery-thumbs button.is-active {
+  border-color: var(--amber);
+  background: #ffffff26;
+  box-shadow: 0 0 0 2px #ff981f33;
+}
+
+.product-gallery-thumbs img { width: 100%; height: 100%; padding: 7px; object-fit: contain; }
+
+@media (max-width: 767px) {
+  .product-gallery-stage { padding-top: 44px; }
+  .product-gallery-main { min-height: 250px; border-radius: 28px; }
+  .product-gallery-main > img { width: min(62%, 240px); height: 240px; }
+  .product-gallery-arrow { width: 40px; height: 40px; }
+  .product-gallery-thumbs { justify-content: flex-start; }
+  .product-gallery-thumbs button { flex-basis: 60px; width: 60px; height: 62px; border-radius: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-gallery-main > img { animation: none; }
+}

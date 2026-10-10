@@ -1,0 +1,13 @@
+import { Download, Search } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { useIdentity } from '../../services/profileService'
+import { AdminPageHeader } from '../../components/admin/AdminPageHeader'
+
+
+
+export function AdminCustomersPage({ rewardsOnly = false }: { rewardsOnly?: boolean }) {
+  const { profiles } = useIdentity()
+  const customers = profiles.map(({ user }) => [user.fullName, user.tier, user.rewardPoints.toLocaleString(), '0', '—', user.id])
+  const [query, setQuery] = useState(''); const [editing, setEditing] = useState(false); const filtered = useMemo(() => customers.filter((customer) => customer[0].toLowerCase().includes(query.toLowerCase())), [query, customers])
+  return <main className="min-h-svh pb-10"><AdminPageHeader section={rewardsOnly ? 'Rewards & Referrals' : 'Customers & Rewards'} title={rewardsOnly ? 'Rewards that stay generous.' : 'Loyalty without guesswork.'} action={<button className="pill-button btn-ink"><Download size={15} /> Export CSV</button>} /><div className="px-6 lg:px-10"><label className="relative mt-7 block max-w-2xl"><Search className="absolute left-5 top-1/2 -translate-y-1/2" size={18} /><span className="sr-only">Search customers</span><input className="field pl-13" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search customer name…" /></label><div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{[['Members', String(customers.length), 'Registered profiles'],['Points issued','0','—'],['Rewards used','NPR 0','—'],['Referrals','0','—']].map(([label,value,detail],index)=><article key={label} className={`rounded-2xl p-5 ${index===3?'bg-[var(--pink)]':'bg-white'}`}><span className="eyebrow text-[var(--green)]">{label}</span><p className="font-brand mt-4 text-3xl font-bold">{value}</p><p className="mt-2 text-xs text-[var(--muted)]">{detail}</p></article>)}</div><div className="table-card mt-6"><table className="admin-table"><thead><tr><th>Member</th><th>Tier</th><th>Points</th><th>Referrals</th><th>Lifetime value</th></tr></thead><tbody>{filtered.map((customer)=><tr key={customer[5]}><td>{customer[0]}</td><td>{customer[1]}</td><td>{customer[2]}</td><td>{customer[3]}</td><td className="text-[var(--green)]">{customer[4]}</td></tr>)}</tbody></table></div><div className="mt-6 flex flex-col gap-4 rounded-2xl bg-[#087a45] p-5 text-white md:flex-row md:items-center md:justify-between"><strong className="text-sm">REWARD RULES • 1 point / NPR 1 • Referral: 1,500 pts • Friend credit: NPR 150</strong><button onClick={() => setEditing((value) => !value)} className="text-xs font-bold text-[var(--lime)]">{editing ? 'RULES SAVED ✓' : 'EDIT RULES →'}</button></div></div></main>
+}

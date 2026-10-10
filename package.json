@@ -1,0 +1,34 @@
+{
+  "name": "griha-mart-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config vite.config.ts",
+    "build": "tsc -b && vite build --config vite.config.ts",
+    "preview": "vite preview --config vite.config.ts",
+    "typecheck": "tsc -b --pretty false",
+    "smoke": "node scripts/smoke.mjs",
+    "gallery-check": "node scripts/gallery-check.mjs"
+  },
+  "dependencies": {
+    "@fontsource/bebas-neue": "latest",
+    "@fontsource/inter": "latest",
+    "@fontsource/space-grotesk": "latest",
+    "framer-motion": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "puppeteer-core": "^25.10.0",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}

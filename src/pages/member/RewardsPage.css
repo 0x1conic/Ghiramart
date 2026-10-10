@@ -1,0 +1,56 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .rewards-page { background: var(--cream); }
+  .rewards-hero { background: radial-gradient(ellipse at 80% 15%, #e6f2d9, transparent 58%); }
+  .depth-perspective { perspective: 1100px; }
+  .depth-surface { position: relative; height: 100%; transform-style: preserve-3d; border-radius: inherit; }
+  .depth-shine { pointer-events: none; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 25%, #ffffff17 48%, transparent 70%); transform: translateZ(65px); }
+  .membership-scene { position: relative; display: grid; place-items: center; min-height: 410px; isolation: isolate; }
+  .membership-scene::before { content: ''; position: absolute; width: 88%; height: 70%; border-radius: 50%; border: 1px solid #b5c9ac; transform: rotate(-22deg); }
+  .membership-scene::after { content: ''; position: absolute; bottom: 6%; width: 65%; height: 35px; border-radius: 50%; background: #17462d26; filter: blur(19px); z-index: -1; }
+  .membership-card { width: min(100%, 440px); border-radius: 28px; }
+  .membership-face { position: relative; min-height: 280px; padding: 30px; border-radius: 28px; border: 1px solid #8aab77; color: white; background: radial-gradient(ellipse at top right, #6a9765, transparent 65%), linear-gradient(135deg, #0b382b, #276449); box-shadow: 0 3px 0 #608958, 0 6px 0 #31563d, 0 32px 60px #163f342b; transform-style: preserve-3d; }
+  .membership-face::before { content: ''; position: absolute; right: 9%; top: 15%; width: 145px; height: 145px; border: 1px solid #d7eeac40; border-radius: 50%; box-shadow: 0 0 0 28px #d7eeac0b, 0 0 0 58px #d7eeac09; }
+  .depth-raised { position: relative; transform: translateZ(40px); }
+  .reward-coin { position: absolute; display: grid; place-items: center; width: 75px; height: 75px; border-radius: 50%; border: 5px solid #ffe3a0; color: #7b4d0c; background: radial-gradient(circle at 30% 20%, #fff4ce, #eeb54c 70%); box-shadow: 2px 3px 0 #ba8425, 4px 6px 0 #ba8425, 10px 18px 25px #65501926; font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; }
+  .reward-coin-top { right: 1%; top: 3%; transform: rotate(20deg); }
+  .reward-coin-bottom { bottom: 3%; left: 1%; transform: rotate(-18deg) scale(.8); }
+  .rewards-progress { height: 7px; border-radius: 999px; background: #d8e4d0; overflow: hidden; }
+  .rewards-progress-fill { height: 100%; width: 82.6667%; background: var(--green); border-radius: inherit; transform-origin: left; }
+  .referral-panel { background: radial-gradient(ellipse at 95% 0, #e6efc4, transparent 65%), #eef1e3; }
+  .referral-panel > div { min-width: 0; }
+  @media (max-width: 767px) {
+    .referral-panel { grid-template-columns: minmax(0, 1fr); }
+    .referral-panel .pill-button { padding-inline: 12px; font-size: 10px; }
+    .membership-scene { min-height: 340px; }
+    .membership-face { padding: 24px; min-height: 250px; }
+    .reward-coin { width: 58px; height: 58px; font-size: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .depth-surface, .depth-raised { transform: none !important; }
+  }
+}
+
+@media (max-width: 359px) {
+  .rewards-page h1 { font-size: clamp(26px, 11vw, 38px); }
+  .rewards-page h2 { font-size: 24px; overflow-wrap: anywhere; }
+  .membership-face { padding: 16px; min-height: 220px; }
+  .membership-face::before { width: 90px; height: 90px; box-shadow: none; }
+  .membership-face .depth-raised { transform: none; }
+  .membership-face .depth-raised:first-child { gap: 4px; }
+  .membership-face .depth-raised:first-child span { font-size: 10px; gap: 6px; letter-spacing: 0; }
+  .membership-face .depth-raised:last-child { flex-wrap: wrap; gap: 8px; }
+  .membership-face p.text-5xl { font-size: 32px; }
+  .membership-scene { min-height: 290px; }
+  .rewards-page .p-6 { padding: 16px; }
+  .rewards-page .grid-cols-2 { grid-template-columns: minmax(0, 1fr); }
+  .rewards-page .flex { min-width: 0; }
+  .rewards-page [aria-label="Filter points history"] { flex-wrap: wrap; }
+  .rewards-page #referral-code { font-size: 16px; }
+  .rewards-page .depth-shine { display: none; }
+}
+
+@media (max-width: 767px) {
+  .membership-scene { overflow: clip; }
+}
